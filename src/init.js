@@ -27,25 +27,25 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    // if 0.length = 1.length, 0 1
 
     window.dancers.push(dancer);
+
     $('body').append(dancer.$node);
   });
 
   $(".lineUpButton").on("click", function(event){
     // iterate over window.dancers
     // run lineUp on each element
+    var each = function(array, iterator){
+      for (var i = 0; i < array.length; i++){
+        iterator(array[i], i, array);
+      }
+    };
+    each(window.dancers, function(value){
+      value.lineUp();
+    });
 
-    for (var i = 0; i < window.dancers.length; i++){
-      window.dancers[i].lineUp();
-    }
-  });
-
-
-
-
-
-
-
+    });
 });
 

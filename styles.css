@@ -3,7 +3,12 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background: url(http://fc02.deviantart.net/fs41/f/2009/008/0/f/Keep_On_Dancing_by_FracFx.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -21,7 +26,9 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  content: url(http://www.sherv.net/cm/emo/funny/2/big-dancing-banana-smiley-emoticon.gif);
   position:absolute;
+}
+.movingDancer{
+
 }

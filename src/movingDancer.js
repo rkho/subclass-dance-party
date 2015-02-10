@@ -1,5 +1,5 @@
 var MovingDancer = function(top, left, timeBetweenSteps){
-
+  this.$node = $('<span class="movingDancer"></span>');
   Dancer.call(this, top, left, timeBetweenSteps);
 
 };

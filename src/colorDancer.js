@@ -14,9 +14,9 @@ ColorDancer.prototype.step = function(){
   // Move somewhere instead of toggle
   //
   //
-  var styleSettings = {
-      border: '20px solid white'
-    };
+  // var styleSettings = {
+  //     border: '20px solid white'
+  //   };
 
-  this.$node.css(styleSettings);
+  // this.$node.css(styleSettings);
 };

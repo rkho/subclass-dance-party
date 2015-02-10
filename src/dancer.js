@@ -32,6 +32,6 @@ Dancer.prototype.setPosition = function(top, left){
 
 Dancer.prototype.lineUp = function(){
   console.log(this);
-  this.setPosition('center', 525);
+  this.setPosition('center', 515);
 
 };
