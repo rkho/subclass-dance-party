@@ -1,37 +1,87 @@
-// Creates and returns a new dancer object that can step
 var Dancer = function(top, left, timeBetweenSteps){
 
-  // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
   this._timeBetweenSteps = timeBetweenSteps;
-  this.step();
-
-  // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
-  // this one sets the position to some random default point within the body
+  this.top = top;
+  this.left = left;
   this.setPosition(top, left);
 
 };
 
-Dancer.prototype.step = function(){
-    // the basic dancer doesn't do anything interesting at all on each step,
-    // it just schedules the next step
-  console.log(this);
-  setTimeout(this.step.bind(this), this._timeBetweenSteps);
-};
+// Commenting this out, since we don't want to use it.
+// Leaving it here to show we were able to complete implementation.
+// Dancer.prototype.step = function(){
+//     // the basic dancer doesn't do anything interesting at all on each step,
+//     // it just schedules the next step
+//   console.log(this);
+//   setTimeout(this.step.bind(this), this._timeBetweenSteps);
+// };
 
 Dancer.prototype.setPosition = function(top, left){
-    // Use css top and left properties to position our <span> tag
-    // where it belongs on the page. See http://api.jquery.com/css/
-    //
-    var styleSettings = {
-      top: top,
-      left: left
-    };
-    this.$node.css(styleSettings);
+
+  var styleSettings = {
+    top: top,
+    left: left
   };
 
-Dancer.prototype.lineUp = function(){
-  console.log(this);
-  this.setPosition('center', 515);
+  this.$node.animate(styleSettings);
+  this.top = top;
+  this.left = left;
 
 };
+
+Dancer.prototype.lineUp = function(){
+  this.setPosition('center', 515);
+};
+
+Dancer.prototype.closest = function(){
+  var closest;
+  var distances = {};
+
+  for (var i = 0; i < window.dancers.length; i++){
+
+    var a = Math.abs(window.dancers[i].left - this.left);
+    var b = Math.abs(window.dancers[i].top - this.top);
+    var c = Math.pow(a, 2) + Math.pow(b, 2);
+    var tempDistance = Math.sqrt(c);
+
+    distances[i]=tempDistance;
+  }
+
+  for (var k in distances){
+    if (distances[k] !== 0){
+      if (closest === undefined || closest > distances[k]){
+        closest = window.dancers[k];
+      }
+    }
+  }
+  return closest;
+
+};
+
+Dancer.prototype.swap = function(){
+
+  var closestLeft = this.closest().left;
+  var closestTop = this.closest().top;
+
+  var thisLeft = this.left;
+  var thisTop = this.top;
+
+  this.closest().setPosition(thisTop, thisLeft);
+  this.setPosition(closestTop, closestLeft);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
